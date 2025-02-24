@@ -1,5 +1,17 @@
 // parse.js
-import { createWorker } from "https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js";
+import { createWorker } from "https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/+esm";
+
+const worker = await createWorker("eng");
+
+async function parseReceipt(image) {
+    await worker.loadLanguage("eng");
+    await worker.initialize("eng");
+
+    const { data: { text } } = await worker.recognize(image);
+    console.log(text);  // Check the extracted text
+    
+    await worker.terminate();
+}
 import { db } from "./firebase.js";
 import {
   collection,
