@@ -12,7 +12,9 @@ async function parseReceipt(image) {
     
     await worker.terminate();
 }
-import { db } from "./firebase.js";
+import { db } from "./firebase.js";  // ✅ Import `db` properly
+
+console.log("Firebase DB imported successfully!", db); // Check if db is loaded
 import {
   collection,
   addDoc,
