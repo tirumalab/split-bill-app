@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Bill Split - OCR</title>
+</head>
+<body>
+  <h1>Upload Receipt</h1>
+  <input type="file" accept="image/*" id="receiptImage" />
+  <button id="parseBtn">Parse Receipt</button>
+  
+  <div id="ocrText" style="white-space: pre-wrap;"></div>
+  
+  <!-- This table will show recognized items for user confirmation -->
+  <table id="itemsTable" border="1" style="margin-top:20px; display:none;">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody id="itemsBody"></tbody>
+  </table>
+  
+  <button id="confirmBtn" style="display:none;">Confirm & Generate Link</button>
+  <p id="shareLink"></p>
+  
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+  <script type="module" src="./parse.js"></script>
+</body>
+</html>
